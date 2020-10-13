@@ -8,7 +8,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  /* ReferenceLine,*/ Brush,
+  ReferenceLine,
+  Brush,
 } from "recharts";
 
 // Config variables
@@ -60,6 +61,9 @@ export const Charts = () => {
     return <div>Loading...</div>;
   } else {
     console.log("グラフの表示");
+    const currentWeight = data.slice(-1)[0].体重;
+    const currentBodyBatPercentage = data.slice(-1)[0].体脂肪率;
+    const currentMuscleMass = data.slice(-1)[0].筋肉量;
     return (
       <div>
         <LineChart
@@ -83,7 +87,11 @@ export const Charts = () => {
           />
           <Tooltip />
           <Legend />
-          {/* <ReferenceLine y={90} label="Max" stroke="red" /> */}
+          <ReferenceLine
+            y={currentWeight}
+            label={"現在 " + currentWeight + "kg"}
+            stroke="#ff70ea"
+          />
           <Line
             connectNulls
             type="monotone"
@@ -116,7 +124,11 @@ export const Charts = () => {
           />
           <Tooltip />
           <Legend />
-          {/* <ReferenceLine y={90} label="Max" stroke="red" /> */}
+          <ReferenceLine
+            y={currentBodyBatPercentage}
+            label={"現在 " + currentBodyBatPercentage + "%"}
+            stroke="#ff70ea"
+          />
           <Line
             connectNulls
             type="monotone"
@@ -148,6 +160,11 @@ export const Charts = () => {
           />
           <Tooltip />
           <Legend />
+          <ReferenceLine
+            y={currentMuscleMass}
+            label={"現在 " + currentMuscleMass + "kg"}
+            stroke="#ff70ea"
+          />
           <Line
             connectNulls
             type="monotone"
