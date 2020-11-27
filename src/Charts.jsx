@@ -11,6 +11,7 @@ import {
   ReferenceLine,
   Brush,
 } from "recharts";
+import Loading from "./Loading.jsx";
 
 // Config variables
 const SPREADSHEET_ID = process.env.REACT_APP_SPREADSHEET_ID;
@@ -58,7 +59,11 @@ export const Charts = () => {
 
   if (loading || data === undefined) {
     console.log("Loadingの表示");
-    return <div>Loading...</div>;
+    return (
+      <div className="loadingWrap">
+        <Loading />
+      </div>
+    );
   } else {
     console.log("グラフの表示");
     const currentWeight = data.slice(-1)[0].体重;
