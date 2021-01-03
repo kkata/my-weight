@@ -11,20 +11,20 @@ import {
   ReferenceLine,
   Brush,
 } from "recharts";
-import Loading from "./Loading.jsx";
+import Loading from "./Loading";
 
 // Config variables
-const SPREADSHEET_ID = process.env.REACT_APP_SPREADSHEET_ID;
-const SHEET_ID = process.env.REACT_APP_SHEET_ID;
-const CLIENT_EMAIL = process.env.REACT_APP_GOOGLE_CLIENT_EMAIL;
-const PRIVATE_KEY = process.env.REACT_APP_GOOGLE_SERVICE_PRIVATE_KEY;
+const SPREADSHEET_ID: string = process.env.REACT_APP_SPREADSHEET_ID!;
+const SHEET_ID: string = process.env.REACT_APP_SHEET_ID!;
+const CLIENT_EMAIL: string = process.env.REACT_APP_GOOGLE_CLIENT_EMAIL!;
+const PRIVATE_KEY: string = process.env.REACT_APP_GOOGLE_SERVICE_PRIVATE_KEY!;
 
 const decoded = atob(PRIVATE_KEY);
 
 const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
 
 export const Charts = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
